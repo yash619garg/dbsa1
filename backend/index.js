@@ -126,6 +126,15 @@ app.use("/api/orders", orderRoute);
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
 app.use(express.static(path.join(__dirname, '/frontend/dist')));
+
+app.use((req, res, next) => {
+    if (req.url.endsWith('.js')) {
+        res.type('application/javascript');
+    }
+    next();
+});
+
+
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 })
