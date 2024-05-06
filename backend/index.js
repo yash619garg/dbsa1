@@ -128,7 +128,7 @@ app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
 app.use((req, res, next) => {
-    if (req.url.endsWith('.jsx')) {
+    if (req.url.endsWith('.jsx') || req.url.endsWith('.js') || req.url.endsWith('.html')) {
         res.type('application/javascript');
     }
     next();
