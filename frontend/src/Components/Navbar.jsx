@@ -26,7 +26,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="flex w-full relative styleFont bg-white justify-between py-[19px] left-0 top-0 mb-0 items-center border-b-[1px] z-10 md:flex-col gap-2 md:py-0 ">
+      <div className="flex w-full relative bg-white text-[#666666] font2 justify-between py-[19px] left-0 top-0 mb-0 items-center border-b-[1px] z-10 md:flex-col gap-2 md:py-0 ">
         <div className="w-[25%] px-5 md:border-b-[1px] flex justify-between items-center md:w-full md:z-12 md:h-full md:py-5 ">
           <div className="w-full justify-between md:w-[40%] sm:w-[60%] flex md:justify-start items-center gap-5 md:gap-10 smd:gap-5 sm:gap-7 ">
             <div className="w-[48px] h-[48px] ">
@@ -66,12 +66,12 @@ const Navbar = () => {
               ) : (
                 <NavLink
                   to="/login"
-                  className="hidden  px-2 justify-center items-center text-3xl text-gray-500 gap-2 md:flex "
+                  className="hidden  px-2 justify-center items-center text-[16px] gap-2 md:flex "
                 >
                   <span className="sm:text-[38px]">
                     <CgProfile />
                   </span>
-                  <span className="text-[20px] sm:hidden tracking-wider text-gray-500 ">
+                  <span className="text-[16px] sm:hidden tracking-wider ">
                     Sign in / Sign up
                   </span>
                 </NavLink>
@@ -95,7 +95,7 @@ const Navbar = () => {
         >
           <div className="w-[400px] md:w-[450px] flex smd:w-[280px] sm:w-[90%] ">
             <div className="w-full">
-              <div className="flex justify-between h-[48px] rounded-lg px-1 py-1 bg-[#c1c1c133]">
+              <div className="flex text-[#666666] text-[14px] font-[400]  justify-between h-[48px] rounded-lg px-1 py-1 bg-[#c1c1c133]">
                 <input
                   type="text"
                   className="w-full px-3 bg-transparent focus:outline-none "
@@ -117,17 +117,17 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="flex md:py-5 justify-around gap-3 sm:w-[90%] ">
+          <div className="flex md:py-5 justify-around gap-[16px] sm:w-[90%] ">
             <NavLink
               to="/"
-              className="flex border-r-[2px] px-2 justify-center items-center text-2xl text-gray-500 gap-2 "
+              className="flex border-r-[2px] px-2 justify-center items-center text-2xl gap-2 "
             >
               <GoHome />
-              <span className="text-[16px] text-gray-500 ">Home</span>
+              <span className="text-[16px] font-[400] ">Home</span>
             </NavLink>
 
             {userInfo ? (
-              <div className="flex px-3 md:hidden justify-center items-center text-2xl text-gray-500 gap-2 md:border-none border-r-[2px]">
+              <div className="flex px-3 md:hidden justify-center items-center text-2xl gap-2 md:border-none border-r-[2px]">
                 <div className="flex justify-center items-center h-[28px] w-[28px] rounded-full border-[2px] border-gray-400">
                   <span className="uppercase text-[16px] flex">
                     {userInfo?.username?.slice(0, 1)}
@@ -140,13 +140,13 @@ const Navbar = () => {
             ) : (
               <NavLink
                 to="/login"
-                className="flex md:hidden border-r-[2px] px-2 justify-center items-center text-2xl text-gray-500 gap-2 "
+                className="flex md:hidden border-r-[2px] px-2 justify-center items-center text-2xl gap-2 "
               >
                 <div className="flex items-center justify-center gap-2">
                   <span>
                     <CgProfile />
                   </span>
-                  <span className="text-[16px] text-gray-500 ">
+                  <span className="text-[16px] font-[400] ">
                     Sign in/Sign up
                   </span>
                 </div>
@@ -154,16 +154,16 @@ const Navbar = () => {
             )}
             <NavLink
               to="/favorite"
-              className="flex border-r-[2px] px-2 justify-center items-center text-2xl text-gray-500 gap-2 "
+              className="flex border-r-[2px] px-2 justify-center items-center text-2xl gap-2 "
             >
               <span>
                 <GrFavorite />
               </span>
-              <span className="text-[16px] text-gray-500 ">Favorite</span>
+              <span className="text-[16px] font-[400] ">Favorite</span>
             </NavLink>
             <NavLink
               to="/cart"
-              className="flex  px-2 justify-center items-center text-2xl text-gray-500 gap-2 "
+              className="flex  px-2 justify-center items-center text-2xl  gap-2 "
             >
               <div className="relative w-[24px] h-[24px]">
                 <IoCartOutline />
@@ -171,7 +171,7 @@ const Navbar = () => {
                   {cartItems.length}
                 </div>
               </div>
-              <span className="text-[16px] relative text-gray-500 ">Cart</span>
+              <span className="text-[16px] relative font-[400] ">Cart</span>
             </NavLink>
           </div>
         </div>

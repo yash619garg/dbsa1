@@ -34,13 +34,7 @@ const __dirname = path.resolve();
 
 const app = express();
 
-// app.set("trust proxy", 1);
 app.use(cors());
-
-
-
-
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -116,6 +110,8 @@ app.use(cookieParser());
 //     }
 // })
 
+
+
 app.use("/api/users", userRouter);
 app.use('/api/category', categoryRoute);
 app.use('/api/product', productRoute);
@@ -127,28 +123,17 @@ app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
 app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
-app.use((req, res, next) => {
-    if (req.url.endsWith('.jsx') || req.url.endsWith('.js') || req.url.endsWith('.html')) {
-        res.type('application/javascript');
-    }
-    next();
-});
-
-
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
 })
 
 app.get("/api/config/paypal", (req, res) => {
     res.send({ clientId: process.env.PAYPAL_CLIENT_ID });
 });
 
-
 app.use('/', (req, res) => {
     res.send("GET Request Called")
 })
-
-
 
 const port = process.env.PORT || 5000;
 
