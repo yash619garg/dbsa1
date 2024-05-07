@@ -125,11 +125,11 @@ app.use(express.static(path.join(__dirname, './frontend/dist')));
 app.use((req, res, next) => {
     if (req.url.endsWith('.jsx') || req.url.endsWith('.js')) {
         res.contentType('application/javascript');
-        console.log("check commit");
         res.setHeader('Content-Type', 'application/javascript');
     }
     next();
 });
+console.log("check commit");
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
