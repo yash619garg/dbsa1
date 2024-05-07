@@ -122,18 +122,58 @@ app.use("/api/orders", orderRoute);
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
 app.use(express.static(path.join(__dirname, '/frontend/dist')));
+app.use((req, res, next) => {
+    if (req.url.endsWith('.jsx') || req.url.endsWith('.js')) {
+        res.contentType('application/javascript');
+        res.setHeader('Content-Type', 'application/javascript');
+
+    }
+
+    next();
+});
+
+// app.use('/js', express.static(path.join(__dirname, '/frontend/dist/js'), {
+//     // Set content type explicitly to application/javascript
+//     setHeaders: (res, filePath) => {
+//         if (path.extname(filePath) === '.js') {
+//             res.setHeader('Content-Type', 'application/javascript');
+//         }
+//     }
+// }));
+
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
 })
 
+// app.use(express.static(path.join(__dirname, '/frontend/dist')));
+
+
+// app.use(express.static("./public"));
+
+
+
+
 app.get("/api/config/paypal", (req, res) => {
     res.send({ clientId: process.env.PAYPAL_CLIENT_ID });
 });
 
+// app.get('/*.jsx', (req, res) => {
+//     console.log("hiii");
+//     console.log(req);
+//     // Set the appropriate content type header for JavaScript files
+//     res.setHeader('Content-Type', 'application/javascript');
+
+//     // Send the JavaScript file
+//     res.sendFile(path.join(__dirname, 'frontend', "dist", req.path));
+// });
+
+
 app.use('/', (req, res) => {
     res.send("GET Request Called")
 })
+
+
 
 const port = process.env.PORT || 5000;
 
