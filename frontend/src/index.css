@@ -37,6 +37,10 @@ td {
   background: transparent;
 }
 
+::-webkit-scrollbar {
+  display: hidden;
+}
+
 th {
   background: #f8f9fa;
   /* text-align: center; */
