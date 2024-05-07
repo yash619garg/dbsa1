@@ -125,10 +125,15 @@ app.use(express.static(path.join(__dirname, './frontend/dist')));
 app.use((req, res, next) => {
     if (req.url.endsWith('.jsx') || req.url.endsWith('.js')) {
         res.contentType('application/javascript');
+        console.log("check commit");
         res.setHeader('Content-Type', 'application/javascript');
     }
     next();
 });
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
+})
 
 app.use('/js', express.static(path.join(__dirname, '/frontend/dist/js'), {
     // Set content type explicitly to application/javascript
@@ -140,9 +145,6 @@ app.use('/js', express.static(path.join(__dirname, '/frontend/dist/js'), {
 }));
 
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
-})
 
 // app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
