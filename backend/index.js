@@ -121,28 +121,28 @@ app.use('/api/project', projectRoute);
 app.use("/api/orders", orderRoute);
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
-app.use(express.static(path.join(__dirname, './frontend/dist')));
-app.use((req, res, next) => {
-    if (req.url.endsWith('.jsx') || req.url.endsWith('.js')) {
-        res.contentType('application/javascript');
-        res.setHeader('Content-Type', 'application/javascript');
-    }
-    next();
-});
-console.log("check commit");
+// app.use(express.static(path.join(__dirname, './frontend/dist')));
+// app.use((req, res, next) => {
+//     if (req.url.endsWith('.jsx') || req.url.endsWith('.js')) {
+//         res.contentType('application/javascript');
+//         res.setHeader('Content-Type', 'application/javascript');
+//     }
+//     next();
+// });
+// console.log("check commit");
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
-})
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
+// })
 
-app.use('/js', express.static(path.join(__dirname, '/frontend/dist/js'), {
-    // Set content type explicitly to application/javascript
-    setHeaders: (res, filePath) => {
-        if (path.extname(filePath) === '.js') {
-            res.setHeader('Content-Type', 'application/javascript');
-        }
-    }
-}));
+// app.use('/js', express.static(path.join(__dirname, '/frontend/dist/js'), {
+//     // Set content type explicitly to application/javascript
+//     setHeaders: (res, filePath) => {
+//         if (path.extname(filePath) === '.js') {
+//             res.setHeader('Content-Type', 'application/javascript');
+//         }
+//     }
+// }));
 
 
 

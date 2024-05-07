@@ -30,6 +30,13 @@ td {
   /* margin: auto; */
 }
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
 th {
   background: #f8f9fa;
   /* text-align: center; */

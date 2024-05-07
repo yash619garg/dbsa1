@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./Sidebar";
 import { useLogoutMutation } from "../Redux/Api/userApiSlice";
 import { toast } from "react-toastify";
+import { logout } from "../Redux/features/authSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -23,14 +24,27 @@ const Navbar = () => {
 
   const [logoutUser] = useLogoutMutation();
   const dispatch = useDispatch();
-  const logoutHandler = async (e) => {
-    e.preventDefault();
+  // const logoutHandler = async (e) => {
+  //   console.log("hiiii");
+  //   e.preventDefault();
+  //   try {
+  //     const res = await logoutUser().unwrap();
+  //     dispatch(logout());
+  //     toast.success("user logout successfully");
+  //     navigate("/login");
+  //   } catch (error) {
+  //     toast.error(error?.data?.error || error.error);
+  //   }
+  // };
+
+  const logoutHandler = async () => {
     try {
       const res = await logoutUser().unwrap();
-      console.log(res);
-      dispatch(logout());
-      toast.success("user logout successfully");
-      navigate("/login");
+      if (!res.error) {
+        dispatch(logout());
+        toast.success("user logout successfully");
+        navigate("/login");
+      }
     } catch (error) {
       toast.error(error?.data?.error || error.error);
     }
@@ -82,13 +96,21 @@ const Navbar = () => {
                   <span className="flex items-center sm:hidden capitalize text-[16px] md:text-[20px]">
                     {userInfo?.username}
                   </span>
-                  <div className="px-3 py-1 absolute hidden group-hover:flex top-4 left-4 ">
-                    <div
+                  <div className="absolute hidden group-hover:flex flex-col font2 z-[1000] text-[#757575] font-[500] shadow-slate-500 shadow-md p-3 bg-white border-[1px]  rounded-[12px] border-gray-400 text-[16px] w-[122px] left-0 top-[52px]">
+                    <button
                       onClick={logoutHandler}
-                      className="bg-white text-[12px] font-[500] h-[32px]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
+                      className="bg-white text-[12px] font-[500] h-[32px] rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
                     >
-                      <NavLink className="w-full h-full flex justify-start items-center">
+                      <div className="w-full h-full flex justify-start items-center">
                         Logout
+                      </div>
+                    </button>
+                    <div className="bg-white text-[12px] font-[500] h-[32px] w-full  z-[123456]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3">
+                      <NavLink
+                        to="/privateRoute"
+                        className="w-full h-full flex justify-start items-center"
+                      >
+                        Profile
                       </NavLink>
                     </div>
                   </div>
@@ -167,18 +189,15 @@ const Navbar = () => {
                   {userInfo?.username}
                 </span>
                 <div className="absolute hidden group-hover:flex flex-col font2 z-[1000] text-[#757575] font-[500] shadow-slate-500 shadow-md p-3 bg-white border-[1px]  rounded-[12px] border-gray-400 text-[16px] w-[172px] left-0 top-[32px]">
-                  <div
+                  <button
                     onClick={logoutHandler}
-                    className="bg-white text-[12px] font-[500] h-[32px] w-full  z-[123456]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
+                    className="bg-white text-[12px] font-[500] h-[32px]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
                   >
-                    <NavLink className="w-full h-full flex justify-start items-center">
+                    <div className="w-full h-full flex justify-start items-center">
                       Logout
-                    </NavLink>
-                  </div>
-                  <div
-                    onClick={logoutHandler}
-                    className="bg-white text-[12px] font-[500] h-[32px] w-full  z-[123456]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
-                  >
+                    </div>
+                  </button>
+                  <div className="bg-white text-[12px] font-[500] h-[32px] w-full  z-[123456]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3">
                     <NavLink
                       to="/privateRoute"
                       className="w-full h-full flex justify-start items-center"

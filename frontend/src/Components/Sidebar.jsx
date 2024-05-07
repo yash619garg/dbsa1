@@ -89,16 +89,13 @@ const SideBar = () => {
                 Profile
               </NavLink>
             </li>
-            <li
-              onClick={logoutHandler}
-              className="bg-white text-[12px] font-[500] h-[32px]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
-            >
-              <NavLink
+            <li className="bg-white text-[12px] font-[500] h-[32px]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3">
+              <div
                 onClick={logoutHandler}
                 className="w-full h-full flex justify-start items-center"
               >
                 Logout
-              </NavLink>
+              </div>
             </li>
           </>
         )}
