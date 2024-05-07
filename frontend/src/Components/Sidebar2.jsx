@@ -17,14 +17,14 @@ const SideBar2 = () => {
 
   //   console.log(userInfo?.isAdmin);
   return (
-    <div className="absolute flex-col z-[1000] text-[#757575] font-[500] shadow-slate-500 shadow-md p-3 bg-white border-[1px]  rounded-md border-gray-400 text-[16px] w-[222px] left-0 top-[25px] ">
+    <div className="absolute flex-col z-[1000] text-[#757575] font-[500] shadow-slate-500 shadow-md p-3 bg-white border-[1px]  rounded-md border-gray-400 text-[16px] w-[182px] left-0 top-[25px] ">
       <ul className="rounded-md text-start  first:rounded-md last:rounded-md ">
         <NavLink
           style={({ isActive }) => ({
             color: isActive ? "#525CEB" : "#757575",
           })}
           to="adminDashboard"
-          className="flex justify-start items-center gap-1 "
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
         >
           <span className="text-[18px]">
             <MdDashboard />
@@ -36,7 +36,7 @@ const SideBar2 = () => {
             color: isActive ? "#525CEB" : "#757575",
           })}
           to="usersList"
-          className="flex justify-start items-center gap-1 "
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
         >
           <span className="text-[18px]">
             <LuUsers />
@@ -48,7 +48,7 @@ const SideBar2 = () => {
             color: isActive ? "#525CEB" : "#757575",
           })}
           to="createProduct"
-          className="flex justify-start items-center gap-1 "
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
         >
           <span className="text-[18px]">
             <PiCubeLight />
@@ -60,7 +60,7 @@ const SideBar2 = () => {
             color: isActive ? "#525CEB" : "#757575",
           })}
           to="categoryList"
-          className="flex justify-start items-center gap-1 "
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
         >
           <span className="text-[18px]">
             <MdOutlineCategory />
@@ -72,7 +72,7 @@ const SideBar2 = () => {
             color: isActive ? "#525CEB" : "#757575",
           })}
           to="createCategory"
-          className="flex justify-start items-center gap-1 "
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
         >
           <span className="text-[18px]">
             <MdOutlineCategory />
@@ -84,7 +84,7 @@ const SideBar2 = () => {
             color: isActive ? "#525CEB" : "#757575",
           })}
           to="createBlog"
-          className="flex justify-start items-center gap-1 "
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
         >
           <span className="text-[18px]">
             <HiOutlineDocumentText />
@@ -96,7 +96,7 @@ const SideBar2 = () => {
             color: isActive ? "#525CEB" : "#757575",
           })}
           to="createProject"
-          className="flex justify-start items-center gap-1 "
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
         >
           <span className="text-[18px]">
             <HiOutlineDocumentText />
@@ -108,7 +108,7 @@ const SideBar2 = () => {
             color: isActive ? "#525CEB" : "#757575",
           })}
           to="orderList"
-          className="flex justify-start items-center gap-1 "
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
         >
           <span className="text-[20px]">
             <CiShoppingCart />

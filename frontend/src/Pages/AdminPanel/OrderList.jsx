@@ -36,7 +36,7 @@ const OrderList = () => {
       </h1>
       <table className="mt-8 font2 w-full">
         <thead>
-          <tr className="mb-[5rem]">
+          <tr className="mb-[5rem] text-[14px] font-[700]">
             <th className="">ITEM</th>
             {/* <th className="pl-1">ID</th> */}
             <th className="">USER</th>
@@ -47,7 +47,7 @@ const OrderList = () => {
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-[16px] font-[400] font2">
           {data?.orders.map((order) => (
             <tr key={order._id}>
               <td data-cell="ITEM">
@@ -59,7 +59,10 @@ const OrderList = () => {
               </td>
               {/* <td data-cell="ID">{order._id}</td> */}
 
-              <td data-cell="USER" className="min-w-[125px]">
+              <td
+                data-cell="USER"
+                className="min-w-[125px] text-[#525CEB] capitalize "
+              >
                 {order.user ? order.user.username : "N/A"}
               </td>
 

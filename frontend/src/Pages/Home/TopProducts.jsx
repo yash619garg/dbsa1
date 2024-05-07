@@ -29,7 +29,7 @@ const TopProducts = () => {
   ) : (
     <div className="w-full flex justify-center flex-col gap-12 items-center mt-20 ">
       <div className="flex w-[85%] vsm:w-[90%] justify-between items-center">
-        <div className="text-[30px] font-[600]">Featured Products</div>
+        <div className="text-[30px] font2 font-[600]">Featured Products</div>
       </div>
       <div className="w-[85%] vsm:w-[90%] flex flex-col gap-10 overflow-scroll">
         <div className="w-full flex gap-6">

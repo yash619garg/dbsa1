@@ -25,7 +25,7 @@ const SingleProduct = ({ product }) => {
         <div className="flex flex-col">
           <Link
             to={`/productDetails/${product._id}`}
-            className="text-[#191C1F] text-[16px] font-[400] hover:underline "
+            className="text-[#191C1F] font2 text-[16px] font-[400] hover:underline "
           >
             {product.name}
           </Link>

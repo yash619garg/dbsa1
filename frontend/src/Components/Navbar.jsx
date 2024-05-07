@@ -8,8 +8,10 @@ import { GrFavorite } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { Outlet, Link, useNavigate, NavLink } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./Sidebar";
+import { useLogoutMutation } from "../Redux/Api/userApiSlice";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -18,6 +20,21 @@ const Navbar = () => {
   const [openSideBar, setSidebar] = useState(false);
   const { userInfo } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
+
+  const [logoutUser] = useLogoutMutation();
+  const dispatch = useDispatch();
+  const logoutHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await logoutUser().unwrap();
+      console.log(res);
+      dispatch(logout());
+      toast.success("user logout successfully");
+      navigate("/login");
+    } catch (error) {
+      toast.error(error?.data?.error || error.error);
+    }
+  };
 
   const searchHandler = (value) => {
     setKeyword(value);
@@ -40,7 +57,10 @@ const Navbar = () => {
                 {openSideBar && <SideBar />}
               </button>
             </div>
-            <div className="flex tracking-wider text-center flex-col logo justify-start">
+            <Link
+              to="/"
+              className="flex tracking-wider text-center flex-col logo justify-start"
+            >
               <div className="text-4xl font-semibold">DBSA</div>
               <div className="text-[7px] sm:hidden tracking-tighter font-semibold ">
                 EFFICIENT & EFFECTIVE ENGINEERING
@@ -48,12 +68,12 @@ const Navbar = () => {
               <div className="text-[10px] sm:hidden mt-[3px] tracking-tighter font-semibold ">
                 DISTRIBUTION BOARDS SA (PTY) LTD
               </div>
-            </div>
+            </Link>
           </div>
-          <div className="hidden md:flex w-full md:w-[60%] sm:w-[40%]    justify-end items-center gap-10 smd:gap-5">
-            <div className="relative w-full flex flex-col items-end ">
+          <div className="hidden md:flex w-full md:w-[60%] sm:w-[40%] justify-end items-center gap-10 smd:gap-5">
+            <div className="relative  w-full flex flex-col items-end ">
               {userInfo ? (
-                <div className="flex justify-center items-center text-2xl  text-gray-500 gap-2 md:border-none border-r-[2px]">
+                <div className="flex group relative justify-center items-center text-2xl  text-gray-500 gap-2 md:border-none border-r-[2px]">
                   <div className="flex justify-center items-center h-[28px] w-[28px] md:h-[32px] md:w-[32px] rounded-full border-[2px] border-gray-400">
                     <span className="uppercase text-[16px] md:text-[20px] flex">
                       {userInfo?.username?.slice(0, 1)}
@@ -62,6 +82,16 @@ const Navbar = () => {
                   <span className="flex items-center sm:hidden capitalize text-[16px] md:text-[20px]">
                     {userInfo?.username}
                   </span>
+                  <div className="px-3 py-1 absolute hidden group-hover:flex top-4 left-4 ">
+                    <div
+                      onClick={logoutHandler}
+                      className="bg-white text-[12px] font-[500] h-[32px]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
+                    >
+                      <NavLink className="w-full h-full flex justify-start items-center">
+                        Logout
+                      </NavLink>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <NavLink
@@ -127,7 +157,7 @@ const Navbar = () => {
             </NavLink>
 
             {userInfo ? (
-              <div className="flex px-3 md:hidden justify-center items-center text-2xl gap-2 md:border-none border-r-[2px]">
+              <div className="flex px-3 md:hidden group relative justify-center items-center text-2xl gap-2 md:border-none border-r-[2px]">
                 <div className="flex justify-center items-center h-[28px] w-[28px] rounded-full border-[2px] border-gray-400">
                   <span className="uppercase text-[16px] flex">
                     {userInfo?.username?.slice(0, 1)}
@@ -136,6 +166,27 @@ const Navbar = () => {
                 <span className="flex items-center capitalize text-[16px]">
                   {userInfo?.username}
                 </span>
+                <div className="absolute hidden group-hover:flex flex-col font2 z-[1000] text-[#757575] font-[500] shadow-slate-500 shadow-md p-3 bg-white border-[1px]  rounded-[12px] border-gray-400 text-[16px] w-[172px] left-0 top-[32px]">
+                  <div
+                    onClick={logoutHandler}
+                    className="bg-white text-[12px] font-[500] h-[32px] w-full  z-[123456]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
+                  >
+                    <NavLink className="w-full h-full flex justify-start items-center">
+                      Logout
+                    </NavLink>
+                  </div>
+                  <div
+                    onClick={logoutHandler}
+                    className="bg-white text-[12px] font-[500] h-[32px] w-full  z-[123456]   rounded-md hover:bg-[#F6F6F6]   py-1 px-3"
+                  >
+                    <NavLink
+                      to="/privateRoute"
+                      className="w-full h-full flex justify-start items-center"
+                    >
+                      Profile
+                    </NavLink>
+                  </div>
+                </div>
               </div>
             ) : (
               <NavLink

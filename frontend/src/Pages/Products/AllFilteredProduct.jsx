@@ -183,7 +183,7 @@ const AllFilteredProduct = () => {
           </button>
         </div>
         <div className="flex flex-col">
-          <h1 className="text-[24px] font2 font-[300] mb-4">Category</h1>
+          <h1 className="text-[24px] font2 font-[400] mb-4">Category</h1>
           <div className="flex flex-col gap-2">
             {category.allCategory.map((c) => {
               return (
@@ -207,7 +207,7 @@ const AllFilteredProduct = () => {
           </div>
         </div>
         <div className="flex flex-col">
-          <h1 className="text-[24px] font2 font-[300] mb-4">Brands</h1>
+          <h1 className="text-[24px] font2 font-[400] mb-4">Brands</h1>
           <div className="flex flex-col gap-1">
             {brand.map((c, index) => {
               return (
@@ -225,10 +225,10 @@ const AllFilteredProduct = () => {
           </div>
         </div>
         <div className="flex flex-col ">
-          <h1 className="text-[24px] font2 font-[300] mb-4">Price</h1>
+          <h1 className="text-[24px] font2 font-[400] mb-4">Price</h1>
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
-              <label htmlFor="text-[15px] font-[500] font2">Min Price</label>
+              <label htmlFor="text-[15px] font-[300] font2">Min Price</label>
               <input
                 type="number"
                 value={lowPrice}
@@ -240,7 +240,7 @@ const AllFilteredProduct = () => {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="text-[15px] font-[500] font2">Max Price</label>
+              <label htmlFor="text-[15px] font-[300] font2">Max Price</label>
               <input
                 type="number"
                 value={highPrice}

@@ -1,6 +1,7 @@
 import React from "react";
 // import { Projects } from "../../data";
 import { Link } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 import { useAllProjectQuery } from "../../Redux/Api/projectSlice";
 import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
@@ -15,11 +16,15 @@ const LatestProjects = () => {
   ) : (
     <div className="w-full flex justify-center flex-col gap-12 items-center mt-20 ">
       <div className="flex w-[80%] vsm:w-[90%] justify-between items-center">
-        <div className="text-[30px] vsm:text-[24px] font-[600]">
+        <div className="text-[30px] vsm:text-[24px] font2 font-[600]">
           Our Latest Projects
         </div>
-        <Link className="px-4 text-[16px] font-[600]" to="/project">
+        <Link
+          className="px-4 flex justify-center gap-1 items-center text-[16px] font2 text-[#222222] font-[600]"
+          to="/project"
+        >
           View All
+          <IoIosArrowForward className="text-[#525CEB] font-[600]" />
         </Link>
       </div>
       <div className="w-[80%] vsm:w-[90%] flex flex-col gap-10 overflow-scroll">

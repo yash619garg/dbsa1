@@ -6,7 +6,7 @@ const Brands = () => {
   return (
     <div className="w-full flex justify-center flex-col gap-12  items-center mt-20 ">
       <div className="flex w-[80%] vsm:w-[90%] gap-10 justify-between  items-center overflow-scroll">
-        <div className="text-[30px] font-[600] sm:text-[20px]">
+        <div className="text-[30px] font2 font-[600] sm:text-[20px]">
           Verified Brands
         </div>
         {/* <Link className="px-4 text-[16px] font-[600]" to="/">

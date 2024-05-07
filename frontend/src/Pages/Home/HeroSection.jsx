@@ -5,7 +5,7 @@ import design from "../../images/Mask group.png";
 import { newProduct } from "../../data";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
-import { FaQuoteRight } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useGetAllCategoryQuery } from "../../Redux/Api/categorySlice";
 import Loader from "../../Components/Loader";
@@ -18,7 +18,6 @@ const HeroSection = () => {
     isLoading: categoryLoading,
     error,
   } = useGetAllCategoryQuery();
-
 
   const [currentIndex, setIndex] = useState(0);
   useEffect(() => {
@@ -82,18 +81,21 @@ const HeroSection = () => {
               <img src={bg} alt="" className="w-full h-full  " />
             </div>
             <div className="w-full flex smd:flex-col px-10 py-4 justify-between items-center h-full absolute left-0 top-0 ">
-              <div className="flex flex-col gap-2 smd:h-1/2 smd:w-full smd:justify-center smd:items-center smd:gap-4  smd:order-2 text-white items-start px-5  ">
-                <div className="text-5xl flex text-start smd:text-center sm:text-4xl sm:tracking-wider ">
+              <div className="flex flex-col gap-4 smd:h-1/2 smd:w-full smd:justify-center smd:items-center smd:gap-4  smd:order-2 text-white items-start px-5  ">
+                <div className="text-5xl font-[600] font2 flex text-start smd:text-center sm:text-4xl sm:tracking-wider ">
                   {name}
                 </div>
-                <div className="text-3xl sm:text-2xl ">
+                <div className="text-3xl font-[500] font2 sm:text-2xl ">
                   From Rs. {startingRate}{" "}
                 </div>
                 <Link
                   to={`/shop?category=${product._id}`}
-                  className="bg-[#282a3a] rounded-md px-4 py-3"
+                  className="bg-[#282a3a] text-[16px] flex justify-start items-center gap-[12px] rounded-md px-[32px] py-4 font2 uppercase font-[700]"
                 >
-                  Shop Now
+                  Shop Now{" "}
+                  <span>
+                    <FaArrowRight />
+                  </span>
                 </Link>
               </div>
               <div className="h-full min-w-1/3 smd:w-full smd:h-1/2 relative smd:order-1">

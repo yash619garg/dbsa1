@@ -17,8 +17,8 @@ const AdminSidebar = () => {
   return (
     <>
       <div className="min-w-[250px] font2  smd:hidden overflow-hidden flex flex-col bg-white border-r-2 border-b-2 p-10 border-gray-200">
-        <h1 className="text-[16px] font-[600]">Menu</h1>
-        <div className="flex flex-col text-[16px] font-[400] gap-4 text-[#001737] mt-5 ">
+        <h1 className="text-[12px] font2 font-[700] uppercase">Menu</h1>
+        <div className="flex flex-col text-[14px] font2 font-[400] gap-4 text-[#001737] mt-5 ">
           <NavLink
             style={({ isActive }) => ({
               color: isActive ? "#525CEB" : "#757575",

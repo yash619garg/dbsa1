@@ -4,8 +4,8 @@ const About = () => {
   return (
     <div className="w-full flex justify-center mt-20 ">
       <div className="w-[80%] vsm:w-[90%] flex flex-col gap-10">
-        <div className="text-[30px] font-[600]">DBSA Efficient</div>
-        <div className="w-full text-[16px] font2 tracking-widest leading-[30px]">
+        <div className="text-[30px] font2 font-[600]">DBSA Efficient</div>
+        <div className="w-full text-[14px] font2 font-[400] tracking-widest leading-[30px]">
           With years of experience in both Electrical Consulting and
           Manufacturing of Low-Medium Voltage Switchgear Panels, Distribution
           Boards SA (PTY) Ltd is fully equipped to handle projects of greater

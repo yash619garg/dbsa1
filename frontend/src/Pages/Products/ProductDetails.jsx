@@ -123,15 +123,15 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="w-full col-span-2 smd:col-span-3 min-h-[200px] smd:order-3 px-3">
-            <h1 className="text-[36px] font-[600] md:text-[30px] smd:text-[36px] ">
+            <h1 className="text-[36px] font2 font-[600] md:text-[30px] smd:text-[36px] ">
               {product?.name}
             </h1>
-            <p className="text-[18px] text-[#82828B] uppercase font-[500] mt-[21px] ">
+            <p className="text-[18px] text-[#82828B] font2 uppercase font-[500] mt-[21px] ">
               {" "}
               by {product?.brand}
             </p>
             <div className="flex mt-2 gap-6 ">
-              <div className="min-w-[114px] text-[20px] weight-[400] h-[44px] flex justify-center items-center rounded-[8px] px-2 text-[#525CEB] bg-[#525ceb21] ">
+              <div className="min-w-[114px] text-[20px] weight-[500] font2 h-[44px] flex justify-center items-center rounded-[8px] px-2 text-[#525CEB] bg-[#525ceb21] ">
                 R {product?.price.toFixed(2)}
               </div>
               <div className="">
@@ -231,7 +231,7 @@ const ProductDetails = () => {
           <div className="min-w-full col-span-2 smd:col-span-3 smd:order-5 row-span-2">
             <div className="min-w-full h-full shadow-md sm:shadow-none max-h-[500px] shadow-slate-500 rounded-xl sm:rounded-none overflow-y-scroll">
               <div className="w-full min-h-[163px] border-gray-300 border-b-[1px] gap-2 flex flex-col justify-center items-center">
-                <h1 className="text-[22px] font-[600]">Reviews</h1>
+                <h1 className="text-[24px] font1 font-[700]">Reviews</h1>
                 <div className="flex flex-wrap px-2 items-center justify-center py-3 bg-[#F6FAFB] gap-3">
                   <div className="">
                     <Rating value={product?.rating} />
@@ -286,7 +286,9 @@ const ProductDetails = () => {
           {/* <div className="w-[300px]">review</div> */}
           <div className="col-span-3 w-full px-4 flex smd:order-4 flex-col gap-3  ">
             <div className="w-full flex justify-between  ">
-              <span className="text-[24px] font-[500]">Write a Review</span>
+              <span className="text-[24px] font2 font-[500]">
+                Write a Review
+              </span>
               <div className="focus:outline-none tracking-widest border-[1px] flex justify-center items-center gap-1 border-gray-600 px-2 py-1 rounded-md">
                 <select
                   value={rating}
@@ -346,7 +348,7 @@ const ProductDetails = () => {
             /> */}
               <button
                 onClick={submitReviewHandler}
-                className={`w-[30%] bg-[#525CEB] py-3 text-white rounded-md ${
+                className={`w-[30%] bg-[#525CEB] text-[16px] font-[500] font2 py-3 text-white rounded-md ${
                   addReviewLoading && "cursor-wait"
                 }`}
               >

@@ -34,12 +34,12 @@ const Category = () => {
                 />
               </div>
               <div className="flex flex-col justify-center items-center">
-                <div className="text-[18px] text-center font-[400] text-[#191C1F] ">
+                <div className="text-[18px] font2 text-center font-[400] text-[#191C1F] ">
                   {product.name}
                 </div>
                 <Link
                   to={`/shop?category=${product._id}`}
-                  className="text-[#525CEB] underline text-[18px] font-[600] "
+                  className="text-[#525CEB] font2 underline text-[18px] font-[600] "
                 >
                   {" "}
                   Shop Now

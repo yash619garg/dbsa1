@@ -21,7 +21,7 @@ const PageLinks = () => {
                     className="w-[85px] h-[85px] sm:w-[55px] sm:h-[55px]"
                   />
                 </div>
-                <div className="text-gray-700 text-center text-[16.8px] font-[600] mt-6">
+                <div className="text-[#222222] font2 text-center text-[18.8px] font-[600] mt-6">
                   {page.name}
                 </div>
               </Link>

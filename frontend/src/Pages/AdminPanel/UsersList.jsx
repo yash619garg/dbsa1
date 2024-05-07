@@ -88,7 +88,7 @@ const UsersList = () => {
           {/* <AdminPanel /> */}
           <table className="mt-8 font2 w-full">
             <thead>
-              <tr className="mb-[5rem]">
+              <tr className="mb-[5rem] text-[14px] font-[700] ">
                 {/* <th className="uppercase text-left px-3 py-2">Id</th> */}
                 <th className="uppercase  px-3 py-2">Username</th>
                 <th className="uppercase  px-3 py-2">Email</th>
@@ -97,7 +97,7 @@ const UsersList = () => {
                 <th className="uppercase px-3 py-2"></th>
               </tr>
             </thead>
-            <tbody className="">
+            <tbody className="text-[16px] font-[400] font2">
               {data?.users.map((user) => {
                 const { _id, username, email, isAdmin } = user;
                 return (
@@ -105,7 +105,9 @@ const UsersList = () => {
                     {/* <td className="text-left px-3 py-2">{_id}</td> */}
                     <td data-cell="Username" className="px-3 py-2">
                       {editableUserId !== _id ? (
-                        <div>{username}</div>
+                        <div className="min-w-[125px] text-[#525CEB] capitalize">
+                          {username}
+                        </div>
                       ) : (
                         <div className="flex justify-between bg-gray-500 rounded">
                           <input

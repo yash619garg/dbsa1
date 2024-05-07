@@ -11,10 +11,12 @@ const Certificates = () => {
             className="min-w-[350px] flex flex-col gap-5 items-center justify-start h-full"
           >
             <img src={data.image} className="w-[220px] h-[220px]" alt="" />
-            <div className="text-[18px] text-center font-[600]">
+            <div className="text-[18px] font2 text-center font-[600]">
               {data.title}
             </div>
-            <div className="text-[12px]">{data.caption}</div>
+            <div className="text-[14px] font2 font-[400] text-[#414141]">
+              {data.caption}
+            </div>
           </div>
         );
       })}
