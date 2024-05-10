@@ -16,7 +16,7 @@ const MyOrders = () => {
       toast.error("no more items");
     }
   };
-  const descreaseHandler = () => {
+  const decreaseHandler = () => {
     console.log(page);
     if (page > 1) {
       setPage(page - 1);
@@ -108,7 +108,7 @@ const MyOrders = () => {
         </div>
         <div className="gap-3 px-2 flex justify-end">
           <button
-            onClick={descreaseHandler}
+            onClick={decreaseHandler}
             className="rounded-md bg-[#525CEB] text-white p-2"
           >
             Prev

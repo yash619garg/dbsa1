@@ -77,7 +77,7 @@ export const fetchSixProducts = asyncHandler(async (req, res) => {
 })
 
 export const fetchProductById = asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).populate("brand", "name");
     if (!product) {
         res.status(404);
         throw new Error("product not found");

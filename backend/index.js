@@ -27,6 +27,7 @@ import uploadRoute from "./routes/uploadRoute.js";
 import blogRoute from "./routes/blogRoute.js";
 import projectRoute from "./routes/projectRoute.js"
 import orderRoute from "./routes/orderRoute.js"
+import brandRoute from "./routes/brandRoute.js"
 // import createToken from "./utils/createToken.js";
 
 const __dirname = path.resolve();
@@ -119,6 +120,7 @@ app.use('/api/upload', uploadRoute);
 app.use('/api/blog', blogRoute);
 app.use('/api/project', projectRoute);
 app.use("/api/orders", orderRoute);
+app.use("/api/brands", brandRoute);
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
 app.use(express.static(path.join(__dirname, './frontend/dist')));

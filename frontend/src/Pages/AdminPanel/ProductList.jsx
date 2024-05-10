@@ -11,6 +11,7 @@ import {
 } from "../../Redux/Api/productSlice";
 import { useGetAllCategoryQuery } from "../../Redux/Api/categorySlice";
 import Loader from "../../Components/Loader";
+import { useGetAllBrandQuery } from "../../Redux/Api/brandSlice";
 
 const ProductList = () => {
   const { id } = useParams();
@@ -29,12 +30,13 @@ const ProductList = () => {
   const [stock, setStock] = useState(0);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("661220b33969bfc4a830ec15");
+  const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
 
   const [uploadImage] = useUploadProductImageMutation();
   const [deleteProduct] = useDeleteProductMutation();
   const { data: categories } = useGetAllCategoryQuery();
+  const { data: brands } = useGetAllBrandQuery();
 
   const navigate = useNavigate();
 
@@ -260,17 +262,24 @@ const ProductList = () => {
             <label htmlFor="brand" className="text-gray-500 text-xl">
               Brand
             </label>
-            <input
-              type="text"
+            <select
               name="brand"
               id="brand"
-              placeholder="Brand"
+              placeholder="Choose Brand"
               value={brand}
               onChange={(e) => {
                 setBrand(e.target.value);
               }}
               className="px-5 py-3 border-2 border-gray-400 focus:outline-none rounded-md"
-            />
+            >
+              {brands?.allBrand.map((c) => {
+                return (
+                  <option key={c._id} value={c._id}>
+                    {c.name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
           <div className="flex flex-col w-[45%] gap-2">
             <label htmlFor="discount" className="text-gray-500 text-xl">

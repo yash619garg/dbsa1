@@ -11,6 +11,7 @@ import Loader from "../../Components/Loader";
 import SingleProduct from "./SingleProduct";
 import { useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useGetAllBrandQuery } from "../../Redux/Api/brandSlice";
 
 const AllFilteredProduct = () => {
   const [openSideBar, setSidebar] = useState(false);
@@ -21,7 +22,6 @@ const AllFilteredProduct = () => {
   const [categoryArray, setCategoryArray] = useState([]);
   const [brandArray, setBrandArray] = useState([]);
   const [page, setPage] = useState(1);
-  let brand;
   const { pathname } = useLocation();
 
   const [keyword, setKeyword] = useState("");
@@ -34,7 +34,7 @@ const AllFilteredProduct = () => {
     }
   };
 
-  const descreaseHandler = () => {
+  const decreaseHandler = () => {
     console.log(page);
     if (page > 1) {
       setPage(page - 1);
@@ -54,6 +54,7 @@ const AllFilteredProduct = () => {
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
   const categoryQuery = sp.get("category") || "";
+  const brandQuery = sp.get("brand") || "";
   const keywordQuery = sp.get("keyword") || "";
   console.log(keywordQuery);
   console.log(keyword);
@@ -89,9 +90,11 @@ const AllFilteredProduct = () => {
   const { data: category, isLoading: categoryLoading } =
     useGetAllCategoryQuery();
 
+  const { data: brand, isLoading: brandLoading } = useGetAllBrandQuery();
   console.log(category, data);
 
-  const Loading = productLoading || categoryLoading || allProductLoading;
+  const Loading =
+    productLoading || categoryLoading || brandLoading || allProductLoading;
 
   const handleCategory = (value, cat) => {
     if (value) {
@@ -136,11 +139,11 @@ const AllFilteredProduct = () => {
     setPage(1);
   }, [brandArray]);
 
-  if (!allProductLoading) {
-    brand = Array.from(
-      new Set(allProduct.map((p) => p.brand).filter((b) => b !== undefined))
-    );
-  }
+  // if (!allProductLoading) {
+  //   brand = Array.from(
+  //     new Set(allProduct.map((p) => p.brand).filter((b) => b !== undefined))
+  //   );
+  // }
   //   console.log(brand);
 
   //   console.log(categoryArray);
@@ -208,17 +211,23 @@ const AllFilteredProduct = () => {
         </div>
         <div className="flex flex-col">
           <h1 className="text-[24px] font2 font-[400] mb-4">Brands</h1>
-          <div className="flex flex-col gap-1">
-            {brand.map((c, index) => {
+          <div className="flex flex-col gap-2">
+            {brand.allBrand.map((c) => {
               return (
-                <div key={index} className="flex gap-2">
+                <div key={c._id} className="flex gap-2">
                   <input
+                    id="checkCat"
                     type="checkbox"
+                    defaultChecked={
+                      c._id.toString() === brandQuery ? true : false
+                    }
                     onChange={(e) => {
-                      handleBrand(e.target.checked, c);
+                      handleBrand(e.target.checked, c._id);
                     }}
                   />
-                  <label>{c}</label>
+                  <label htmlFor="checkCat" className="">
+                    {c.name}
+                  </label>
                 </div>
               );
             })}
@@ -282,7 +291,7 @@ const AllFilteredProduct = () => {
               </div>
               <div className="gap-3 px-2 flex justify-end">
                 <button
-                  onClick={descreaseHandler}
+                  onClick={decreaseHandler}
                   className="rounded-md bg-[#525CEB] text-white p-2"
                 >
                   Prev

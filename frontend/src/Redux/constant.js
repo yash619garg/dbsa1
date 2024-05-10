@@ -1,6 +1,7 @@
 export const BASE_URL = "";
 export const user_url = "/api/users"
 export const category_url = '/api/category'
+export const brand_url = '/api/brands'
 export const PRODUCT_URL = "/api/product"
 export const UPLOAD_URL = "/api/upload"
 export const review_URL = "/api/reviews"

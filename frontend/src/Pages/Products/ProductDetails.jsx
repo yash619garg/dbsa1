@@ -128,7 +128,7 @@ const ProductDetails = () => {
             </h1>
             <p className="text-[18px] text-[#82828B] font2 uppercase font-[500] mt-[21px] ">
               {" "}
-              by {product?.brand}
+              by {product?.brand.name}
             </p>
             <div className="flex mt-2 gap-6 ">
               <div className="min-w-[114px] text-[20px] weight-[500] font2 h-[44px] flex justify-center items-center rounded-[8px] px-2 text-[#525CEB] bg-[#525ceb21] ">

@@ -7,7 +7,7 @@ import { LuUsers } from "react-icons/lu";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdOutlineCategory } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
-import { AiOutlineBars } from "react-icons/ai";
+import { FcElectricity } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import { HiOutlineDocumentText } from "react-icons/hi";
 
@@ -78,6 +78,30 @@ const SideBar2 = () => {
             <MdOutlineCategory />
           </span>
           Create Category
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => ({
+            color: isActive ? "#525CEB" : "#757575",
+          })}
+          to="brandList"
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
+        >
+          <span className="text-[18px]">
+            <FcElectricity />
+          </span>
+          Brands
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => ({
+            color: isActive ? "#525CEB" : "#757575",
+          })}
+          to="createBrand"
+          className="flex h-[32px] text-[12px] font-[500] justify-start items-center gap-1 "
+        >
+          <span className="text-[18px]">
+            <FcElectricity />
+          </span>
+          Create Brand
         </NavLink>
         <NavLink
           style={({ isActive }) => ({

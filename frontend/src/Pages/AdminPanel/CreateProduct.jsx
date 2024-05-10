@@ -7,6 +7,7 @@ import {
   useUploadProductImageMutation,
 } from "../../Redux/Api/productSlice";
 import { useGetAllCategoryQuery } from "../../Redux/Api/categorySlice";
+import { useGetAllBrandQuery } from "../../Redux/Api/brandSlice";
 // import AdminPanel from "../../components/AdminPanel";
 
 const CreateProduct = () => {
@@ -23,6 +24,7 @@ const CreateProduct = () => {
   const [uploadImage] = useUploadProductImageMutation();
   const [createProduct, { isLoading }] = useCreateProductMutation();
   const { data: categories } = useGetAllCategoryQuery();
+  const { data: brands } = useGetAllBrandQuery();
 
   const navigate = useNavigate();
 
@@ -89,13 +91,13 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center p-4 ">
-      <div className="text-gray-500 text-2xl mt-5 tracking-wider ">
+    <div className="min-h-screen w-full font2 flex flex-col items-center p-4 ">
+      <div className="text-gray-500 font2 text-2xl mt-5 tracking-wider ">
         Create Product
       </div>
       <div className="">
         <div className="flex justify-around flex-wrap gap-7 mt-7 items-center ">
-          <div className="flex relative w-[320px] group h-[320px] justify-center items-center bg-[#EDEBE9] rounded-[20px]">
+          <div className="flex font2 relative w-[320px] group h-[320px] justify-center items-center bg-[#EDEBE9] rounded-[20px]">
             <img
               src={image1}
               alt=""
@@ -140,7 +142,7 @@ const CreateProduct = () => {
                   accept="image/*"
                   name="image"
                   onChange={uploadImageHandler2}
-                  className={`${!image2 ? "hidden" : "text-black"}`}
+                  className={`font2 ${!image2 ? "hidden" : "text-black"}`}
                 />
               </label>
             </div>
@@ -188,7 +190,7 @@ const CreateProduct = () => {
               className="px-5 py-3 border-2 border-gray-400 focus:outline-none rounded-md"
             />
           </div>
-          <div className="flex flex-col w-[45%] sm:w-full gap-2">
+          <div className="flex font2 flex-col w-[45%] sm:w-full gap-2">
             <label htmlFor="price" className="text-gray-500 text-xl">
               Price
             </label>
@@ -201,26 +203,34 @@ const CreateProduct = () => {
               onChange={(e) => {
                 setPrice(e.target.value);
               }}
-              className="px-5 py-3 border-2  border-gray-400 focus:outline-none rounded-md"
+              className="px-5 font2 py-3 border-2  border-gray-400 focus:outline-none rounded-md"
             />
           </div>
         </div>
         <div className="w-full flex justify-between flex-wrap gap-4 mt-5">
-          <div className="flex flex-col w-[45%] sm:w-full gap-2">
+          <div className="flex flex-col w-[45%] sm:w-full  gap-2">
             <label htmlFor="brand" className="text-gray-500 text-xl">
               Brand
             </label>
-            <input
-              type="text"
+            <select
               name="brand"
               id="brand"
-              placeholder="Brand"
+              placeholder="Choose Brand"
               value={brand}
               onChange={(e) => {
                 setBrand(e.target.value);
               }}
               className="px-5 py-3 border-2 border-gray-400 focus:outline-none rounded-md"
-            />
+            >
+              <option value="">select</option>
+              {brands?.allBrand.map((c) => {
+                return (
+                  <option key={c._id} value={c._id}>
+                    {c.name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
           <div className="flex flex-col w-[45%] sm:w-full gap-2">
             <label htmlFor="discount" className="text-gray-500 text-xl">

@@ -39,6 +39,8 @@ import Profile from "./Pages/UserPanal/Profile.jsx";
 import MyOrders from "./Pages/UserPanal/MyOrders.jsx";
 import ContactUs from "./Pages/other/Contact.jsx";
 import About from "./Pages/other/About.jsx";
+import CreateBrands from "./Pages/AdminPanel/CreateBrands.jsx";
+import BrandList from "./Pages/AdminPanel/BrandList.jsx";
 // import UsersList from "./Pages/AdminPanel.jsx/UsersList.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -76,9 +78,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 />
                 <Route path="createProduct" element={<CreateProduct />} />
                 <Route path="createCategory" element={<CreateCategories />} />
+                <Route path="createBrand" element={<CreateBrands />} />
                 <Route path="createBlog" element={<CreateBlog />} />
                 <Route path="createProject" element={<CreateProject />} />
                 <Route path="categoryList" element={<CategoryList />} />
+                <Route path="brandList" element={<BrandList />} />
                 <Route path="usersList" element={<UsersList />} />
                 <Route path="orderList" element={<OrderList />} />
                 <Route path="updateProduct/:id" element={<ProductList />} />

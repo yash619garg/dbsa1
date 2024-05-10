@@ -13,6 +13,7 @@ import Message from "../../Components/Message";
 import DeliveryStep from "../../Components/DeliveryStep";
 
 const Order = () => {
+  const { userInfo } = useSelector((state) => state.auth);
   const { id: orderId } = useParams();
   const {
     data: order,
@@ -24,7 +25,8 @@ const Order = () => {
   const [deliverOrder, { isLoading: loadingDeliver }] =
     useDeliverOrderMutation();
 
-  const { userInfo } = useSelector((state) => state.auth);
+  console.log(order);
+
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
   const {
     data: paypal,
@@ -207,7 +209,7 @@ const Order = () => {
           <span>R {order.totalPrice}</span>
         </div>
 
-        {!order.isPaid && (
+        {!order.isPaid && userInfo._id === order?.user._id && (
           <div>
             {loadingPay && <Loader />}{" "}
             {isPending ? (

@@ -87,7 +87,7 @@ const Navbar = () => {
           <div className="hidden md:flex w-full md:w-[60%] sm:w-[40%] justify-end items-center gap-10 smd:gap-5">
             <div className="relative  w-full flex flex-col items-end ">
               {userInfo ? (
-                <div className="flex group relative justify-center items-center text-2xl  text-gray-500 gap-2 md:border-none border-r-[2px]">
+                <div className="flex cursor-pointer group relative justify-center items-center text-2xl  text-gray-500 gap-2 md:border-none border-r-[2px]">
                   <div className="flex justify-center items-center h-[28px] w-[28px] md:h-[32px] md:w-[32px] rounded-full border-[2px] border-gray-400">
                     <span className="uppercase text-[16px] md:text-[20px] flex">
                       {userInfo?.username?.slice(0, 1)}
@@ -118,7 +118,7 @@ const Navbar = () => {
               ) : (
                 <NavLink
                   to="/login"
-                  className="hidden  px-2 justify-center items-center text-[16px] gap-2 md:flex "
+                  className="hidden cursor-pointer  px-2 justify-center items-center text-[16px] gap-2 md:flex "
                 >
                   <span className="sm:text-[38px]">
                     <CgProfile />
@@ -179,7 +179,7 @@ const Navbar = () => {
             </NavLink>
 
             {userInfo ? (
-              <div className="flex px-3 md:hidden group relative justify-center items-center text-2xl gap-2 md:border-none border-r-[2px]">
+              <div className="flex cursor-pointer px-3 md:hidden group relative justify-center items-center text-2xl gap-2 md:border-none border-r-[2px]">
                 <div className="flex justify-center items-center h-[28px] w-[28px] rounded-full border-[2px] border-gray-400">
                   <span className="uppercase text-[16px] flex">
                     {userInfo?.username?.slice(0, 1)}

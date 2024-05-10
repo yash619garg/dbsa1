@@ -41,8 +41,9 @@ const DeliveryStep = ({
       if (!res.error) {
         toast.success("status updated successfully");
       }
-    } catch (error) {}
-    toast.error(error?.data?.error || error.error);
+    } catch (error) {
+      toast.error(error?.data?.error || error.error);
+    }
   };
 
   const statusHandler = (e) => {
