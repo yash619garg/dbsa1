@@ -210,7 +210,7 @@ const markOrderAsDelivered = async (req, res) => {
 export const updateDeliveryStatus = asyncHandler(async (req, res) => {
     // console.log("asdfghjk");
     const { isDelivered, isConfirmed, isShipped, isOutOfDelivery } = req.body;
-    // console.log(req.body);
+    console.log(req.body);
     const id = req.params.id;
     // console.log(id);
     const order = await Order.findById(id);
