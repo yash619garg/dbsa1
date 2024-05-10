@@ -121,8 +121,8 @@ app.use('/api/project', projectRoute);
 app.use("/api/orders", orderRoute);
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
-// app.use(express.static(path.join(__dirname, './frontend/dist')));
-app.use(express.static(path.join(__dirname, './frontend')));
+app.use(express.static(path.join(__dirname, './frontend/dist')));
+// app.use(express.static(path.join(__dirname, './frontend')));
 app.use((req, res, next) => {
     if (req.url.endsWith('.jsx') || req.url.endsWith('.js')) {
         res.contentType('application/javascript');
@@ -133,8 +133,8 @@ app.use((req, res, next) => {
 console.log("check commit");
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
-    // res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
+    // res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend', "dist", 'index.html'));
 })
 
 app.use('/js', express.static(path.join(__dirname, '/frontend/dist/js'), {
