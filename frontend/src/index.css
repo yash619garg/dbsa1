@@ -30,7 +30,7 @@ td {
   /* margin: auto; */
 }
 
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {

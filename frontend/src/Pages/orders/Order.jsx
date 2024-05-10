@@ -10,6 +10,7 @@ import {
 import { useSelector } from "react-redux";
 import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
+import DeliveryStep from "../../Components/DeliveryStep";
 
 const Order = () => {
   const { id: orderId } = useParams();
@@ -24,7 +25,7 @@ const Order = () => {
     useDeliverOrderMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
-  const [{ isPanding }, paypalDispatch] = usePayPalScriptReducer();
+  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
   const {
     data: paypal,
     isLoading: loadingPaPal,
@@ -139,6 +140,19 @@ const Order = () => {
             </div>
           )}
         </div>
+        <div className="w-full flex flex-col">
+          <h2 className="text-xl font-bold mb-4 px-4 sm:px-2  mt-[3rem]">
+            Shipping Status
+          </h2>
+
+          <DeliveryStep
+            isConfirmed={order.isConfirmed}
+            id={orderId}
+            isShipped={order.isShipped}
+            isDelivered={orderId.isDelivered}
+            isOutOfDelivery={order.isOutOfDelivery}
+          />
+        </div>
       </div>
 
       <div className="w-[40%] sm:w-full">
@@ -196,7 +210,7 @@ const Order = () => {
         {!order.isPaid && (
           <div>
             {loadingPay && <Loader />}{" "}
-            {isPanding ? (
+            {isPending ? (
               <Loader />
             ) : (
               <div>

@@ -1,3 +1,4 @@
+import asyncHandler from "../middleware/ErrorHandler.js";
 import Order from "../model/orderSchema.js";
 import Product from "../model/productModel.js";
 
@@ -205,6 +206,29 @@ const markOrderAsDelivered = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+export const updateDeliveryStatus = asyncHandler(async (req, res) => {
+    // console.log("asdfghjk");
+    const { isDelivered, isConfirmed, isShipped, isOutOfDelivery } = req.body;
+    // console.log(req.body);
+    const id = req.params.id;
+    // console.log(id);
+    const order = await Order.findById(id);
+    if (!order) {
+        res.status(404);
+        throw new Error("order not found");
+    }
+    else {
+        order.isConfirmed = isConfirmed;
+        order.isDelivered = isDelivered;
+        order.isShipped = isShipped;
+        order.isOutOfDelivery = isOutOfDelivery;
+
+        await order.save();
+        // console.log(order);
+        res.status(200).json({ message: "delivery status updated" });
+    }
+})
 
 export {
     createOrder,

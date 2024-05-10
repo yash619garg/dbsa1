@@ -68,13 +68,24 @@ const orderSchema = mongoose.Schema(
         paidAt: {
             type: Date,
         },
+        isShipped: {
+            type: Boolean,
+            default: false
+        },
+        isConfirmed: {
+            type: Boolean,
+            default: true
+        },
+        isOutOfDelivery: {
+            type: Boolean,
+            default: false
 
+        },
         isDelivered: {
             type: Boolean,
             required: true,
             default: false,
         },
-
         deliveredAt: {
             type: Date,
         },
