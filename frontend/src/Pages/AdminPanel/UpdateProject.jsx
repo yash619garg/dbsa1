@@ -129,7 +129,7 @@ const UpdateProject = () => {
             onClick={updateProjectHandler}
             className="w-[160px] bg-[#525CEB] h-[50px] py-3 capitalize text-[18px] tracking-wider font-[350] rounded-lg text-white "
           >
-            Create
+            Update
           </button>
           <button
             onClick={deleteProjectHandler}

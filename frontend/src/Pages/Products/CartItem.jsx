@@ -54,7 +54,7 @@ const CartItem = ({ item }) => {
           </Link>
           <p className="vsm:hidden uppercase text-[#82828B] text-[18px] font2 font-[400] ">
             {" "}
-            BY {item.brand}
+            BY {item.brand.name}
           </p>
         </div>
       </div>
@@ -68,7 +68,7 @@ const CartItem = ({ item }) => {
           </Link>
           <p className="vsm:hidden uppercase text-[#82828B] text-[18px] font2 font-[400] ">
             {" "}
-            BY {item.brand}
+            BY {item.brand.name}
           </p>
         </div>
         <div className="text-[#82828B] text-[18px] font2 font-[400]">

@@ -11,7 +11,7 @@ const Category = () => {
     isLoading: categoryLoading,
     error,
   } = useGetAllCategoryQuery();
-  console.log(categories);
+  // console.log(categories);
   // console.log(categories);
   return categoryLoading ? (
     <Loader />

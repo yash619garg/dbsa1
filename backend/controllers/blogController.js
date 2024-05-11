@@ -3,13 +3,13 @@ import Blog from "../model/blogSchema.js";
 
 
 export const createBlog = asyncHandler(async (req, res) => {
-    const { title, blog } = req.body;
-    if (!title || !blog) {
+    const { title, blog, image } = req.body;
+    if (!title || !blog || !image) {
         res.status(400);
         throw new Error("please fill all the inputs");
     }
     else {
-        const newBlog = await new Blog({ title, blog }).save();
+        const newBlog = await new Blog({ title, blog, image }).save();
         if (!newBlog) {
             res.status(404);
             throw new Error("something went wrong")
@@ -19,7 +19,7 @@ export const createBlog = asyncHandler(async (req, res) => {
 })
 
 export const updateBlog = asyncHandler(async (req, res) => {
-    const { title, blog } = req.body;
+    const { title, blog, image } = req.body;
     const id = req.params.id;
 
     const existingBlog = await Blog.findById(id);
@@ -30,6 +30,7 @@ export const updateBlog = asyncHandler(async (req, res) => {
     else {
         existingBlog.title = title || existingBlog.title;
         existingBlog.blog = blog || existingBlog.blog;
+        existingBlog.image = image || existingBlog.image;
 
         await existingBlog.save();
         res.status(200).json(existingBlog);

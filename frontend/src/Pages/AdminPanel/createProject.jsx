@@ -7,8 +7,8 @@ const CreateProject = () => {
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [uploadImage] = useUploadProductImageMutation();
   const [createProject] = useCreateProjectMutation();
+  const [uploadImage] = useUploadProductImageMutation();
   const uploadImageHandler = async (e) => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
@@ -81,7 +81,7 @@ const CreateProject = () => {
           <div className="flex flex-col w-full gap-3">
             <label htmlFor="">Description</label>
             <textarea
-              placeholder="Write your blog here "
+              placeholder="Write about your project here "
               name=""
               id=""
               cols="20"
