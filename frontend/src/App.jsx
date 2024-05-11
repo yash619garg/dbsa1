@@ -20,15 +20,15 @@ const App = () => {
     <div className="font1">
       <ToastContainer />
       <Navbar />
-      <main className="relative">
-        <a
+      <main className="">
+        {/* <a
           href="http://wa.me/+919416482163"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed top-[120px] sm:top-[100px] z-50 right-[30px]"
         >
           <RiWhatsappFill className="text-[50px] text-green-500 bg-white rounded-full px-2 shadow-md shadow-slate-400" />
-        </a>
+        </a> */}
         <Outlet />
       </main>
       <MainFooter />
