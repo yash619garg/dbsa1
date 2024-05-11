@@ -14,7 +14,7 @@ const PageLinks = () => {
                 key={index}
                 className="min-w-[155px] sm:min-w-[100px]  flex flex-col"
               >
-                <div className="w-full h-[155px] sm:h-[100px] flex justify-center items-center border-[1px] shadow-lg shadow-slate-500 border-black bg-[#f3f3f3] rounded-full">
+                <div className="w-[155px] h-[155px] sm:h-[100px] sm:w-[100px] flex justify-center items-center border-[1px] shadow-lg shadow-slate-500 border-black bg-[#f3f3f3] rounded-full">
                   <img
                     src={page.image}
                     alt=""
