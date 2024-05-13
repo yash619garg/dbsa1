@@ -2,12 +2,14 @@
 import express, { urlencoded } from "express";
 import cors from "cors";
 // import session from "express-session";
-// import passport from "passport";
+// import cookieSession from "cookie-session";
+import passport from "passport";
 // import Oauth2 from "passport-google-oauth2"
 import dotenv from "dotenv";
 import path from "path";
 import User from "./model/userModel.js"
 import cookieParser from "cookie-parser"
+import passportUtils from "./utils/passport.js";
 // const OAuth2Strategy = Oauth2.Strategy;
 dotenv.config();
 
@@ -28,6 +30,7 @@ import blogRoute from "./routes/blogRoute.js";
 import projectRoute from "./routes/projectRoute.js"
 import orderRoute from "./routes/orderRoute.js"
 import brandRoute from "./routes/brandRoute.js"
+import createToken from "./utils/createToken.js";
 // import createToken from "./utils/createToken.js";
 
 const __dirname = path.resolve();
@@ -39,77 +42,39 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-// routes
-
+passportUtils(app);
 
 
-// app.use(session({
-//     secret: process.env.SECRET_KEY,
-//     resave: false,
-//     saveUninitialized: true
-// }))
+// initial google oauth login
+app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"], session: true }));
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.get("/auth/google/callback", passport.authenticate("google", {
+    successRedirect: process.env.FRONTEND_URL,
+    failureRedirect: `${process.env.FRONTEND_URL}/login`
+}))
 
-// passport.use(
-//     new OAuth2Strategy({
-//         clientID: process.env.CLIENT_ID,
-//         clientSecret: process.env.CLIENT_SECRET,
-//         callbackURL: "/auth/google/callback",
-//         scope: ["profile", "email"]
-//     },
-//         async (accessToken, refreshToken, profile, done) => {
-//             try {
-//                 const email = profile.emails[0].value;
-
-//                 let user = await User.findOne({ email });
-
-//                 if (!user) {
-//                     user = new User({
-//                         password: profile.id,
-//                         username: profile.displayName,
-//                         email: profile.emails[0].value,
-//                         // image: profile.photos[0].value
-//                     });
-
-//                     await user.save();
-//                 }
-//                 return done(null, user)
-//             } catch (error) {
-//                 console.log(error);
-//                 return done(error, null)
-//             }
-//         }
-//     )
-// )
-// passport.serializeUser((user, done) => {
-//     done(null, user);
-// })
-
-// passport.deserializeUser((user, done) => {
-//     done(null, user);
-// });
-
-// // initial google ouath login
-// app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-
-// app.get("/auth/google/callback", passport.authenticate("google", {
-//     successRedirect: process.env.FRONTEND_URL,
-//     failureRedirect: `${process.env.FRONTEND_URL}/login`
-// }))
-
-// app.get("/login/success", async (req, res) => {
-
-//     if (req.user) {
-//         console.log(req.user);
-//         res.status(200).json({ message: "user Login", user: req.user })
-//         createToken()
-//     } else {
-//         res.status(400).json({ message: "Not Authorized" })
-//     }
-// })
+app.get("/auth/login/success", async (req, res) => {
+    console.log(req.user);
+    if (req.user) {
+        const userExists = await User.findOne({ email: req.user._json.email })
+        if (userExists) {
+            createToken(res, userExists._id)
+        } else {
+            const newUser = new User({
+                name: req.user._json.name,
+                email: req.user._json.email,
+                password: Date.now()
+            })
+            createToken(res, newUser._id)
+            await newUser.save()
+        }
+        res.status(200).json({ ...req.user, _id: userExists._id, isAdmin: userExists.isAdmin },)
+    } else {
+        res.status(403).json({
+            message: "Not Authorized",
+        })
+    }
+})
 
 
 
@@ -132,7 +97,6 @@ app.use((req, res, next) => {
     }
     next();
 });
-console.log("check commit");
 
 app.get("*", (req, res) => {
     // res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
@@ -147,6 +111,8 @@ app.use('/js', express.static(path.join(__dirname, '/frontend/dist/js'), {
         }
     }
 }));
+
+
 
 app.get("/api/config/paypal", (req, res) => {
     res.send({ clientId: process.env.PAYPAL_CLIENT_ID });

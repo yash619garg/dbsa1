@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeroSection from "./HeroSection";
 import About from "./About";
 import LatestProjects from "./LatestProjects";
@@ -9,18 +9,52 @@ import Category from "./Category";
 import { RiWhatsappFill } from "react-icons/ri";
 import Certificates from "./Certificates";
 import Brands from "./Brands";
+import { useLoginGoogleQuery } from "../../Redux/Api/googleSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setCredential } from "../../Redux/features/authSlice";
+import axios from "axios";
+import { toast } from "react-toastify";
+// import { useGoogleSuccessQuery } from "../../Redux/Api/userApiSlice";
+
+// const { data: userInfo } = useGoogleSuccessQuery();
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const getUser = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.FRONTEND_URL}/auth/login/success`,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+      console.log(
+        res.data.email,
+        res.data._id,
+        res.data.isAdmin,
+        res.data.displayName
+      );
+      dispatch(
+        setCredential({
+          email: res.data.email,
+          _id: res.data._id,
+          isAdmin: res.data.isAdmin,
+          username: res.data.displayName,
+        })
+      );
+      // toast.success("user logged in successfully");
+    } catch (error) {
+      toast.error(error?.data?.error || error?.error);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <div className="w-full relative styleFont">
-      {/* <a
-        href="http://wa.me/+919416482163"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-[120px] sm:top-[100px] z-50 right-[30px]"
-      >
-        <RiWhatsappFill className="text-[50px] text-green-500 bg-white rounded-full px-2 shadow-md shadow-slate-400" />
-      </a> */}
       <HeroSection />
       <About />
       <LatestProjects />

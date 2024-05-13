@@ -76,8 +76,8 @@ const userApiSlice = apiSlice.injectEndpoints({
                 body: data,
             }),
             invalidatesTags: ["User"],
-        })
+        }),
     })
 })
 
-export const { useLoginMutation, useRegisterMutation, useLogoutMutation, useForgetPasswordMutation, useResetPasswordMutation, useProfileMutation, useDeleteUserMutation, useUpdateUserMutation, useUserListQuery, useUserDetailsQuery } = userApiSlice;
+export const { useLoginMutation, useRegisterMutation, useGoogleSuccessQuery, useLogoutMutation, useForgetPasswordMutation, useResetPasswordMutation, useProfileMutation, useDeleteUserMutation, useUpdateUserMutation, useUserListQuery, useUserDetailsQuery } = userApiSlice;

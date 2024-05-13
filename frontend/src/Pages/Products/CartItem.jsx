@@ -40,7 +40,7 @@ const CartItem = ({ item }) => {
       <div className="flex gap-5 items-center vsm:flex-col vsm:justify-center ">
         <div className="w-[150px] h-[150px] sm:w-[120px] sm:h-[120px] rounded-[14px] bg-[#EDEBE9] flex justify-center  items-center ">
           <img
-            src={item.mainImage}
+            src={item?.mainImage}
             alt=""
             className="w-[133px] h-[133px] sm:w-[100px] sm:h-[100px] object-contain "
           />
@@ -50,11 +50,11 @@ const CartItem = ({ item }) => {
             className="text-[18px] font2 font-[500]"
             to={`/productDetails/${item._id}`}
           >
-            {item.name}
+            {item?.name}
           </Link>
           <p className="vsm:hidden uppercase text-[#82828B] text-[18px] font2 font-[400] ">
             {" "}
-            BY {item.brand.name}
+            BY {item?.brand?.name}
           </p>
         </div>
       </div>
@@ -64,15 +64,15 @@ const CartItem = ({ item }) => {
             className="text-[18px] font2 font-[500]"
             to={`/productDetails/${item._id}`}
           >
-            {item.name}
+            {item?.name}
           </Link>
           <p className="vsm:hidden uppercase text-[#82828B] text-[18px] font2 font-[400] ">
             {" "}
-            BY {item.brand.name}
+            BY {item?.brand?.name}
           </p>
         </div>
         <div className="text-[#82828B] text-[18px] font2 font-[400]">
-          R {item.price}
+          R {item?.price}
         </div>
         <div className="flex gap-2 items-center">
           <button

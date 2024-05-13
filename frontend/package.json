@@ -13,6 +13,8 @@
     "@paypal/react-paypal-js": "^8.3.0",
     "@reduxjs/toolkit": "^2.2.3",
     "aos": "^3.0.0-beta.6",
+    "axios": "^1.6.8",
+    "google-map-react": "^2.2.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18.2.0",

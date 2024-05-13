@@ -143,7 +143,7 @@ const ProductList = () => {
   ) : (
     <div className="min-h-screen flex flex-col items-center p-4 ">
       <div className="text-gray-500 text-2xl mt-5 tracking-wider ">
-        Create Product
+        Update Product
       </div>
       <div className="">
         <div className="flex justify-around flex-wrap gap-7 mt-7 items-center ">

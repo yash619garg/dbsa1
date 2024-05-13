@@ -166,20 +166,23 @@ const ProductDetails = () => {
                 </div>
               </div>
               <div className="flex gap-4">
-                <button
-                  onClick={addToCartHandler}
-                  className="w-[140px] bg-[#525CEB] py-3 capitalize text-[18px] tracking-wider font-[350] rounded-lg text-white "
-                >
-                  Add to cart
-                </button>
-                {userInfo?.isAdmin && (
-                  <Link
-                    to={`/adminMenu/updateProduct/${product._id}`}
+                <div className="">
+                  <button
                     onClick={addToCartHandler}
-                    className="w-[140px] flex justify-center items-center bg-[#525CEB] py-3 capitalize text-[18px] tracking-wider font-[350] rounded-lg text-white "
+                    className="w-[140px] bg-[#525CEB] py-3 capitalize text-[18px] tracking-wider font-[350] rounded-lg text-white "
                   >
-                    Update
-                  </Link>
+                    Add to cart
+                  </button>
+                </div>
+                {userInfo?.isAdmin && (
+                  <button className="">
+                    <Link
+                      to={`/adminMenu/updateProduct/${product._id}`}
+                      className="w-[140px] flex justify-center items-center bg-[#525CEB] py-3 capitalize text-[18px] tracking-wider font-[350] rounded-lg text-white "
+                    >
+                      Update
+                    </Link>
+                  </button>
                 )}
               </div>
             </div>

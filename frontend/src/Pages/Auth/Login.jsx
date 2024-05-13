@@ -50,9 +50,13 @@ const Login = () => {
     }
   };
 
-  const loginwithgoogle = () => {
+  const handleGoogleAuth = async () => {
     window.open("http://localhost:5000/auth/google/callback", "_self");
   };
+
+  // const loginwithgoogle = () => {
+  //   window.open("http://localhost:5000/auth/google/callback", "_self");
+  // };
 
   useEffect(() => {
     if (userInfo) {
@@ -120,7 +124,7 @@ const Login = () => {
               Sign in
             </button>
             <button
-              onClick={loginwithgoogle}
+              onClick={handleGoogleAuth}
               className="w-full h-[48px] flex justify-center items-center gap-2 rounded-lg tracking-wider text-[13px] font-[400] bg-[#000000] text-white "
             >
               <FcGoogle className="text-[22px]" /> Or sign in with Google

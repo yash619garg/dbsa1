@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: [true, "please provide username "],
         maxLength: 30
     },
     email: {
@@ -17,7 +16,6 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "please provide password "],
     },
     isAdmin: {
         type: Boolean,

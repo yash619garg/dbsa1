@@ -80,7 +80,13 @@ const DeliveryStep = ({
         }`}
       >
         <span className="">Confirmed</span>
-        <div className="text-lg text-center">✅</div>
+        <div
+          className={`text-lg text-center  ${
+            step1 && step2 ? "flex" : "hidden"
+          }`}
+        >
+          ✅
+        </div>
         {userInfo.isAdmin && (
           <input
             type="checkBox"

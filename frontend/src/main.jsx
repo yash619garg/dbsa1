@@ -51,10 +51,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Routes>
             <Route path="/" element={<App />}>
               <Route index element={<Home />} />
+              {/* routes for user credentials */}
               <Route path="login" element={<Login />} />
               <Route path="Register" element={<Register />} />
               <Route path="forgetPassword" element={<ForgetPassword />} />
               <Route path="resetPassword/:token" element={<ResetPassword />} />
+              {/* routes for all users (logged in or logged out) */}
               <Route path="product" element={<CreateProduct />} />
               <Route path="blog" element={<AllBlog />} />
               <Route path="project" element={<AllProject />} />

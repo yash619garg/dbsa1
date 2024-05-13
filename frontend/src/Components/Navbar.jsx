@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineBars } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 import { GoHome } from "react-icons/go";
@@ -10,9 +10,14 @@ import { Outlet, Link, useNavigate, NavLink } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./Sidebar";
-import { useLogoutMutation } from "../Redux/Api/userApiSlice";
+import {
+  useGoogleSuccessQuery,
+  useLogoutMutation,
+} from "../Redux/Api/userApiSlice";
 import { toast } from "react-toastify";
-import { logout } from "../Redux/features/authSlice";
+import axios from "axios";
+import { logout, setCredential } from "../Redux/features/authSlice";
+import { useLoginGoogleQuery } from "../Redux/Api/googleSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -24,18 +29,7 @@ const Navbar = () => {
 
   const [logoutUser] = useLogoutMutation();
   const dispatch = useDispatch();
-  // const logoutHandler = async (e) => {
-  //   console.log("hiiii");
-  //   e.preventDefault();
-  //   try {
-  //     const res = await logoutUser().unwrap();
-  //     dispatch(logout());
-  //     toast.success("user logout successfully");
-  //     navigate("/login");
-  //   } catch (error) {
-  //     toast.error(error?.data?.error || error.error);
-  //   }
-  // };
+  // const dispatch = useDispatch();
 
   const logoutHandler = async () => {
     try {
@@ -52,7 +46,6 @@ const Navbar = () => {
 
   const searchHandler = (value) => {
     setKeyword(value);
-    // console.log(keyword);
     navigate(`/shop?keyword=${value}`);
   };
   return (
