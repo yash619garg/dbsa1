@@ -67,6 +67,10 @@ export const logoutUser = asyncHandler(async (req, res) => {
         httpOnly: true,
         expires: new Date(0),
     })
+    res.cookie("connect.sid", "", {
+        httpOnly: true,
+        expires: new Date(0),
+    })
     res.status(201).json({ message: "logged out successfully" });
 })
 
