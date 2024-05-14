@@ -28,7 +28,7 @@ const Register = () => {
   const redirect = sp.get("redirect") || "/";
 
   const handleGoogleAuth = async () => {
-    window.open(`https://dbsa2.onrender.com/auth/google/callback`, "_self");
+    window.open("https://dbsa2.onrender.com/auth/google/callback", "_self");
   };
 
   const handleSignUp = async (e) => {
