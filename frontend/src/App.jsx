@@ -22,7 +22,7 @@ const App = () => {
       <Navbar />
       <main className="">
         <a
-          href="http://wa.me/+919416482163"
+          href="http://wa.me/+27872659969"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-[50px] z-50 left-[30px]"
