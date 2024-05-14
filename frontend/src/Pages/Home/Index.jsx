@@ -23,17 +23,10 @@ const Home = () => {
   const getUser = async () => {
     try {
       const res = await axios.get(
-        `${process.env.FRONTEND_URL}/auth/login/success`,
+        `https://dbsa2.onrender.com/auth/login/success`,
         {
           withCredentials: true,
         }
-      );
-      console.log(res);
-      console.log(
-        res.data.email,
-        res.data._id,
-        res.data.isAdmin,
-        res.data.displayName
       );
       dispatch(
         setCredential({

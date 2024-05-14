@@ -51,7 +51,9 @@ const Login = () => {
   };
 
   const handleGoogleAuth = async () => {
-    window.open("http://localhost:5000/auth/google/callback", "_self");
+    // window.open("http://localhost:5000/auth/google/callback", "_self");
+    console.log(process.env.FRONTEND_URL);
+    window.open(`https://dbsa2.onrender.com/auth/google/callback`, "_self");
   };
 
   // const loginwithgoogle = () => {

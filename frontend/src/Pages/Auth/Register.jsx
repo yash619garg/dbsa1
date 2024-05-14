@@ -27,6 +27,10 @@ const Register = () => {
 
   const redirect = sp.get("redirect") || "/";
 
+  const handleGoogleAuth = async () => {
+    window.open(`https://dbsa2.onrender.com/auth/google/callback`, "_self");
+  };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     console.log("hi");
@@ -117,7 +121,10 @@ const Register = () => {
             >
               Sign in
             </button>
-            <button className="w-full h-[48px] flex justify-center items-center gap-2 rounded-lg tracking-wider text-[13px] font-[400] bg-[#000000] text-white ">
+            <button
+              onClick={handleGoogleAuth}
+              className="w-full h-[48px] flex justify-center items-center gap-2 rounded-lg tracking-wider text-[13px] font-[400] bg-[#000000] text-white "
+            >
               <FcGoogle className="text-[22px]" /> Or sign up with Google
             </button>
           </div>
